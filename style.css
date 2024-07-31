@@ -1,9 +1,9 @@
 /* ==UserStyle==
-@name         Midnight Surfing - Global Dark Style
-@namespace    USO Archive
+@name         Darky
+@namespace    global-dark-side
 @author       luckymouse
-@description  Just my attempt at a global dark style. Bound to mess things up.  Covers About:blank, About:neterror.  The code is <s>uncouth</s> crap IMO, but it works.    Check out style 47391 (which I prefer) for a simpler, easier to edit version.
-@version      20150506.22.52
+@description  Adding the old midnight surfing by luckymouse to userstyles.world. Will try to add changes if I can, when I can.
+@version      20240731.09.02
 @license      CC0-1.0
 @preprocessor uso
 ==/UserStyle== */
@@ -17,9 +17,7 @@ browser[type="content-primary"] {
 
 @-moz-document url-prefix(http: //), url-prefix(https://), url-prefix(ftp://), url-prefix(file://) {
 
-
     /*No background images. try to exclude icons, other misc items. */
-
     *:not(:empty):not([onclick*="open"]):not(span):not([class*="stars"]):not([id*="stars"]):not([id="rating"]):not([class="rating"]):not([class*="prite"]):not([id*="prite"]):not([id*="lbImage"]) {
         background-image: none !important;
     }
@@ -31,7 +29,7 @@ browser[type="content-primary"] {
     }
 
     /* Make descendents of the body element transparent.  Formerly "DIV + SPAN" rules. */
-    body * {
+    body *:not([class*="select"]):not([id*="list"]) {
         background-color: transparent !important;
     }
 
@@ -48,12 +46,11 @@ browser[type="content-primary"] {
     }
 
     /* Try to contrast containers */
-    html:root > body > * > * > * > *:not(input):not([onclick]) > div:not(:empty):not([id]) {
+    html:root > body > * > * > * > *:not(input):not([onclick]) > div:not([class*="overlay"]):not([class*="text-track"]):not(:empty):not([id]) {
         background: none #1c1c1c !important
     }
 
     /* :::::::: Text Presentation :::::::: */
-
     summary,
     details {
         background-color: inherit !important;
@@ -78,13 +75,7 @@ browser[type="content-primary"] {
 
 
     /* :::::::: Headings + Header :::::::: */
-
     /* Header gradient rules */
-
-    header,
-    #header {
-        background: -moz-linear-gradient(#333, #141414) transparent !important;
-    }
 
     #header h1 {
         background-color: transparent !important;
@@ -92,28 +83,23 @@ browser[type="content-primary"] {
 
     h1,
     h2 {
-        background: none #28313E !important;
+        background: none !important;
         border-radius: 5px !important;
-        -moz-border-radius: 5px !important;
-        -webkit-border-radius: 5px !important;
+
     }
 
     h3,
     h4 {
-        background: none #2A3731 !important;
+        background: none !important;
         border-radius: 5px !important;
-        -moz-border-radius: 5px !important;
-        -webkit-border-radius: 5px !important;
     }
 
     h5,
     h6 {
-        background: none #372A2A !important;
+        background: none !important;
     }
 
-
     /* :::::::: Lists :::::::: */
-
     dt {
         background-color: #2B3135 !important;
     }
@@ -135,18 +121,15 @@ browser[type="content-primary"] {
     }
 
     /* :::::::: list Item highlight :::::::: */
-
     li[class*="item"] a:hover,
     li[class*="item"]:hover,
 
     /* Not list item, but still useful*/
-
     [class*="menuitem"]:hover {
         background-color: #2E2B2F !important;
     }
 
     /* :::::::: Tables, cells :::::::: */
-
     table {
         background-color: #232323 !important;
         border-color: #333 !important;
@@ -166,64 +149,46 @@ browser[type="content-primary"] {
     /* === Basic === */
 
     /* anonymous divs */
-
     input *,
     textarea * {
         color: #DDD !important;
     }
 
     html body input:not([type="image"]),
-    button,
+    button:not([class*="play"]):not([id*="play"]),
     html body textarea {
-
         background: none #353535 !important;
-        -moz-appearance: none !important;
-        -webkit-appearance: none !important;
+        appearance: none !important;
         color: #DDD !important;
-        border: solid 1px #777 !important;
-        border-radius: 0 !important;
-        -moz-border-radius: 0 !important;
-        -webkit-border-radius: 0 !important;
         opacity: 1 !important;
     }
 
     /* Style reset. */
-
     html body input[type="checkbox"] {
-        -moz-appearance: checkbox !important;
-        -webkit-appearance: checkbox !important;
+        appearance: checkbox !important;
     }
 
     html body input[type="radio"] {
-        -moz-appearance: radio !important;
-        -webkit-appearance: radio !important;
+        appearance: radio !important;
     }
 
     /* :::::::: Custom styling :::::::: */
-
     html:root input[type="button"],
     html:root input[type="submit"],
     html:root input[type="reset"],
-    html:root button {
-
+    html:root button:not([class*="play"]):not([class*="link"]) {
         color: #EEE !important;
-        background-color: #222437 !important;
-
-        -moz-box-shadow: inset 0 1px rgba(255, 255, 255, 0.2), inset 0 10px rgba(255, 255, 255, 0.1), inset 0 10px 20px rgba(255, 255, 255, 0.15), inset 0 -15px 30px rgba(0, 0, 0, 0.2) !important;
-        -webkit-box-shadow: inset 0 1px rgba(255, 255, 255, 0.2), inset 0 10px rgba(255, 255, 255, 0.1), inset 0 10px 20px rgba(255, 255, 255, 0.15), inset 0 -15px 30px rgba(0, 0, 0, 0.2) !important;
+        box-shadow: 0px 0px 2px 1px #bbb5b5;
     }
 
     html:root input[type="button"]:hover,
     html:root input[type="submit"]:hover,
     html:root input[type="reset"]:hover,
     html:root button:hover {
-
         color: #FFF !important;
         background-color: #31344F !important;
         border-color: #5F687F !important;
-
-        -moz-box-shadow: inset 0 1px rgba(255, 255, 255, 0.3), inset 0 10px rgba(255, 255, 255, 0.2), inset 0 10px 20px rgba(255, 255, 255, 0.25), inset 0 -15px 30px rgba(0, 0, 0, 0.3) !important;
-        -webkit-box-shadow: inset 0 1px rgba(255, 255, 255, 0.3), inset 0 10px rgba(255, 255, 255, 0.2), inset 0 10px 20px rgba(255, 255, 255, 0.25), inset 0 -15px 30px rgba(0, 0, 0, 0.3) !important;
+        box-shadow: inset 0 1px rgba(255, 255, 255, 0.2), inset 0 10px rgba(255, 255, 255, 0.1), inset 0 10px 20px rgba(255, 255, 255, 0.15), inset 0 -15px 30px rgba(0, 0, 0, 0.2) !important;
     }
 
     html:root input[type="image"] {
@@ -235,19 +200,16 @@ browser[type="content-primary"] {
     }
 
     /* Drop-down menu */
-
     select,
     option,
     optgroup {
-
         background: none #383838 !important;
         border-color:#555 !important;
         color:#f1f1f1 !important;
-        -moz-appearance: none !important;
+        appearance: none !important;
     }
 
     /* :::::::: Misc :::::::: */
-
     address {
         background: none #333 !important;
     }
@@ -262,7 +224,6 @@ browser[type="content-primary"] {
     }
 
     /* Remove Rounded Corners, Borders, Spacer, Padding images */
-
     img[src*="spacer"]:empty,
     [id*="round"]:empty,
     [id*="bottom"]:empty,
@@ -276,12 +237,9 @@ browser[type="content-primary"] {
     }
 
     /* Menus and Navigation */
-
     nav,
     menu,
-
     /*Common naming conventions - in case previous declarations fail to give solid BG*/
-
     html body [class*="open"],
     html body [id*="Dropdown"],
     html body [id*="dropdown"],
@@ -294,7 +252,6 @@ browser[type="content-primary"] {
     html body [id*="popup"],
 
     /* Notes, details, etc.  Maybe useful */
-
     html body [class*="note"],
     html body [class*="detail"],
     html body [class*="description"] {
@@ -303,12 +260,11 @@ browser[type="content-primary"] {
 
     /* Also common */
     [class*="content"],
-    [class*="container"] {
+    [class*="container"]:not([class*="shaka"]) {
         background-color: #1c1c1c !important;
     }
 
     /* Headers, Logos */
-
     [id*="masthead"] a,
     [id*="header"] a,
     [id*="logo"] a,
@@ -317,7 +273,6 @@ browser[type="content-primary"] {
     }
 
     /* Instead of increasing specificity rating by using :not, set rules separately */
-
     html:root body [class*="layer"],
     html:root body #lightbox-nav,
     html:root body #imageContainer {
@@ -327,7 +282,6 @@ browser[type="content-primary"] {
     /*::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::*/
 
     /* Universal - sets color of text, border */
-
     * {
         color: #CCC !important;
         border-color: #444 !important;
@@ -344,23 +298,21 @@ browser[type="content-primary"] {
 
 
     /* Link */
-
-    a:link,
+    a:link:not([class*="select"]),
     a:link *:not(img) {
 
-        color: #B1CBF7 !important;
+        color: #C5FFDC !important;
         background-color: transparent !important;
         border-color: #666 !important;
     }
 
     a:visited,
     a:visited * {
-        color: #CDB4E7 !important;
+        color: #8AA897 !important;
     }
 
     a:hover,
     a:hover *:not(img) {
-
         color: #FFE900 !important;
         background-color: #363037 !important;
         border-color: #999 !important;
@@ -373,7 +325,6 @@ browser[type="content-primary"] {
 
 
     /* Event Handlers/Attributes */
-
     [onclick],
     [ondblclick],
     [onmousedown] {
@@ -388,7 +339,6 @@ browser[type="content-primary"] {
     }
 
     /* Make images transparent */
-
     img {
         opacity: .75 !important;
     }
@@ -399,7 +349,7 @@ browser[type="content-primary"] {
     }
 
     svg {
-        background: none #666 !important;
+        background: none !important;
     }
 
     /* Highlight */
@@ -424,7 +374,6 @@ browser[type="content-primary"] {
 }
 
 /* :::::::: About... :::::::: */
-
 @-moz-document url(about:newtab){
 
 window {
@@ -434,14 +383,12 @@ window {
 #newtab-scrollbox {
     background-color: transparent !important;
     background-image: url("chrome://browser/skin/newtab/noise.png"),
-    -moz-linear-gradient(transparent, transparent) !important;
 }
 
 .newtab-title {
     background-color: rgba(0, 0, 0, .75) !important;
     color: #eee !important;
 }
-
 }
 
 @-moz-document url(about:blank){
@@ -450,7 +397,6 @@ html, html * {
     background: none #141414 !important;
     color: #CCC !important;
 }
-
 }
 
 @-moz-document url-prefix("about:neterror") {
@@ -474,5 +420,4 @@ html, html * {
         background-color: #333 !important;
         border-color: #000 !important;
     }
-
 }
