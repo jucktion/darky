@@ -1,313 +1,256 @@
-/* ==UserStyle==
-@name         Darky
-@namespace    global-dark-side
-@author       luckymouse
-@description  Adding the old midnight surfing by luckymouse to userstyles.world. Will try to add changes if I can, when I can.
-@version      20240810.08.17
-@license      CC0-1.0
-@preprocessor uso
-==/UserStyle== */
-@namespace html url(http://www.w3.org/1999/xhtml);
-@namespace xul url(http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul);
+    /* ==UserStyle==
+    @name         Darky
+    @namespace    darky-global
+    @author       luckymouse
+    @description  Adding the old midnight surfing by luckymouse to userstyles.world. Will try to add changes if I can, when I can.
+    @version      20240810.11.47
+    @license      CC0-1.0
+    @preprocessor uso
+    ==/UserStyle== */
+    @namespace html url(http://www.w3.org/1999/xhtml);
+    @namespace xul url(http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul);
 
-:root {
-    --darky-bg: #000;
-    --darky-txt: #CCC;
-    --darky-dim: #141414;
-    --darky-link: #C5FFDC;
-}
+    :root {
+        --darky-bg: #000;
+        --darky-txt: #CCC;
+        --darky-dim: #141414;
+        --darky-select: #626F61;
+        --darky-link: #C5FFDC;
+        --darky-linked: #8AA897;
+        --darky-linkover: #FFE900;
+        --whitey: #fff;
+    }
 
-@-moz-document url-prefix(http: //), url-prefix(https://), url-prefix(ftp://), url-prefix(file://) {
+    @-moz-document url-prefix(http: //), url-prefix(https://), url-prefix(ftp://), url-prefix(file://) {
 
-    /* Universal - sets color of text, border */
-    * {
+        /* Universal - sets color of text, border */
+        * {
+            color: var(--darky-txt) !important;
+            border-color: var(--darky-dim) !important;
+            outline-color: var(--darky-dim) !important;
+            text-shadow: none !important;
+        }
+
+        /* Basic bodies and exceptions */
+        html,
+        body,
+        input[type="button"],
+        input[type="submit"],
+        input[type="reset"],
+        button:not([class*="play"]):not([id*="play"]):not([class*="icon"]):not([class*="link"]):not([class*="vjs-"]):not([class*="control-bar"]) {
+            background: none var(--darky-bg) !important;
+        }
+
+        /* Make descendents of the body element transparent. */
+        body :not(nav):not(menu):not(dialog):not(select):not(th):not(dt):not(caption):not(mark):not(code):not(pre):not(blockquote):not([aria-modal]):not([role="dialog"]):not([role="menu"]):not([class*="slider"]):not([id*="ropdown"]):not([class*="ropdown"]):not([id*="menu"]:not(select)):not([class*="menu"]:not(select)):not([class*="tooltip"]):not(div[class*="popup"]):not(div[id*="popup"]):not(div[class*="modal"]):not(div[id*="modal"]):not(details [id*="list"]):not(div[class*="overlay"]):not([data-paused]):not([data-pressed]):not([name*="icon"]):not([class*="switch"]):not([action="/search"] div):not(div[class*="hovercard"]):not(div[class*="detail"]):not([class*="subscribe"]):not([class*="search"]) {
+            background-color: transparent !important;
+        }
+
+        /*No background images. try to exclude icons, other misc items. */
+        body :not(:empty):not([onclick*="open"]):not(span):not([class*="stars"]):not([id*="stars"]):not([id="rating"]):not([class="rating"]):not([class*="prite"]):not([id*="prite"]):not([id*="lbImage"]):not(media-controls) {
+            background-image: none !important;
+        }
+
+        /* Filter non-icons */
+        span:not(:empty):not([class*="icon"]):not([id*="icon"]):not([class*="star"]):not([id*="star"]):not([id*="rating"]):not([class*="rating"]):not([class*="prite"]) {
+            background: none transparent !important;
+            border-color: var(--darky-dim) !important;
+        }
+
+        /* Link */
+        a:link:not([class*="select"]):not([class*="flair"]),
+        a:link *:not(img) {
+            color: var(--darky-link) !important;
+        }
+
+        a:visited,
+        a:visited * {
+            color: var(--darky-linked) !important;
+        }
+
+        a:hover,
+        a:hover *:not(img) {
+            color: var(--darky-linkover) !important;
+            background-color: var(--darky-dim) !important;
+        }
+
+        /* :: Heading :: */
+        h1, h2, h3, h4, h5, h6 {
+            background: none !important;
+        }
+
+        /* :: Lists :: */
+
+        li a:not([class*="icon"]):not([id*="icon"]):not([onclick]),
+        dt a:not([class*="icon"]):not([id*="icon"]):not([onclick]) {
+            background-image: none !important;
+            text-indent: 0 !important;
+        }
+
+        /* :: Tables, cells :: */
+        table {
+            background-color: var(--darky-bg) !important;
+            border-color: var(--darky-dim) !important;
+        }
+
+        dl,
+        dd,
+        table table,
+        [class*="content"],
+        [class*="container"]:not([class*="shaka"]) {
+            background-color: var(--darky-bg) !important;
+        }
+
+        /* :: Input :: */
+        textarea,
+        input:not([type="image"]):not([type="checkbox"]):not([type="radio"]):not([type="range"]),
+        button:not([class*="play"]):not([id*="play"]):not([class*="icon"]):not([class*="link"]):not([class*="vjs-"]):not([class*="control-bar"]) {
+            background: none var(--darky-bg) !important;
+            appearance: none !important;
+            opacity: 1 !important;
+            box-shadow: 0px 0px 2px 1px var(--darky-txt) !important;
+        }
+
+        /* Style reset. */
+        input[type="checkbox"]:not(label[class*="switch"] input) {
+            appearance: checkbox !important;
+        }
+
+        input[type="radio"] {
+            appearance: radio !important;
+        }
+
+        /* :: Custom styling :: */
+
+        input[type="button"]:hover,
+        input[type="submit"]:hover,
+        input[type="reset"]:hover,
+        button:hover {
+            color: var(--whitey) !important;
+            background: none var(--darky-dim) !important;
+        }
+
+        input[type="image"] {
+            opacity: .85 !important;
+        }
+
+        input[type="image"]:hover {
+            opacity: .95 !important;
+        }
+
+        /* Drop-down menu */
+        select,
+        option,
+        optgroup {
+            background: none var(--darky-bg) !important;
+            border-color: var(--darky-dim) !important;
+            color:var(--darky-txt) !important;
+            appearance: none !important;
+        }
+
+        /* :: Misc :: */
+        /* Currently viewed page */
+        .current {
+            color: var(--whitey) !important;
+        }
+
+        /* Menus and navigation */
+        nav,
+        menu,
+        th,
+        dt,
+        caption,
+        mark,
+        code,
+        pre,
+        blockquote,
+        [class*="quote"],
+        /* :: list Item highlight :: */
+        li[class*="item"] a:hover,
+        li[class*="item"]:hover,
+        /* Not list item, but still useful */
+        [class*="menuitem"]:hover,
+        [class*="open"],
+        [id*="ropdown"],
+        [class*="ropdown"],
+        [id*="menu"]:not(select),
+        [class*="menu"]:not(select),
+        [class*="tooltip"],
+        div[class*="popup"],
+        div[id*="popup"],
+        div[class*="modal"],
+        div[id*="modal"],
+        details [id*="list"],
+        div[class*="overlay"]:not([class*="touch"]),
+        dialog,
+        [role="dialog"],
+        [role="menu"],
+        [aria-modal],
+        [action="/search"] div,
+        div[class*="hovercard"],
+        div[class*="subscribe"],
+        div[class*="search"] {
+            background-color: var(--darky-dim) !important
+        }
+
+        /* Headers, logos */
+        [id*="masthead"] a,
+        [id*="header"] a,
+        [id*="logo"] a,
+        [class*="logo"] a {
+            text-indent: 0 !important;
+        }
+
+        /*::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::*/
+        /* Event handlers/attributes */
+        [onclick],
+        [ondblclick],
+        [onmousedown] {
+            color: #DFD5BC !important;
+            text-indent: 0 !important;
+        }
+
+        [onclick]:hover,
+        [ondblclick]:hover,
+        [onmousedown]:hover {
+            color: var(--dark-linkover) !important;
+        }
+
+        /* Make images transparent */
+        img {
+            opacity: .75 !important;
+        }
+
+        img:hover {
+            opacity: 1 !important;
+            background-color: #888 !important;
+        }
+
+        svg {
+            background: none !important;
+        }
+
+        /* highlight */
+        ::-moz-selection {
+            background-color: var(--darky-select) !important;
+            color: var(--darky-txt) !important;
+        }
+
+        /* :: Specific Fixes :: */
+        /* google */
+        g-img img[src^="/logos/doodles/"] {
+            display:none;
+        }
+
+        /* video players */
+        [class*="vds"] {
+            color: var(--whitey) !important;
+        }
+    }
+
+    @-moz-document url(about:blank){
+    html, html * {
+        background: none var(--darky-bg) !important;
         color: var(--darky-txt) !important;
-        border-color: var(--darky-dim) !important;
-        outline-color: var(--darky-dim) !important;
-        text-shadow: none !important;
     }
-
-    /* Basic Bodies */
-    html,
-    body {
-        background: none var(--darky-bg) !important;
     }
-
-    /* Make descendents of the body element transparent. */
-    body :not(nav):not(menu):not(dialog):not([aria-modal]):not([role="dialog"]):not([role="menu"]):not([class*="slider"]):not([id*="ropdown"]):not([class*="ropdown"]):not([id*="menu"]:not(select)):not([class*="menu"]:not(select)):not([class*="tooltip"]):not(div[class*="popup"]):not(div[id*="popup"]):not(div[class*="modal"]):not(div[id*="modal"]):not(details [id*="list"]):not(div[class*="overlay"]):not([data-paused]):not([data-pressed]):not([name*="icon"]):not([class*="switch"]):not([action="/search"] div):not(div[class*="hovercard"]):not(div[class*="detail"]):not([class*="subscribe"]):not([class*="search"]) {
-        background-color: transparent !important;
-    }
-
-    /*No background images. try to exclude icons, other misc items. */
-    body :not(:empty):not([onclick*="open"]):not(span):not([class*="stars"]):not([id*="stars"]):not([id="rating"]):not([class="rating"]):not([class*="prite"]):not([id*="prite"]):not([id*="lbImage"]):not(media-controls) {
-        background-image: none !important;
-    }
-
-    /* Filter non-icons */
-    span:not(:empty):not([class*="icon"]):not([id*="icon"]):not([class*="star"]):not([id*="star"]):not([id*="rating"]):not([class*="rating"]):not([class*="prite"]) {
-        background: none transparent !important;
-        border-color: var(--darky-dim) !important;
-    }
-
-    /* Link */
-    a:link:not([class*="select"]):not([class*="flair"]),
-    a:link *:not(img) {
-        color: var(--darky-link) !important;
-        background-color: transparent !important;
-    }
-
-    a:visited,
-    a:visited * {
-        color: #8AA897 !important;
-    }
-
-    a:hover,
-    a:hover *:not(img) {
-        color: #FFE900 !important;
-        background-color: #363037 !important;
-    }
-
-    /* :: Text Presentation :: */
-    summary,
-    details {
-        background-color: inherit !important;
-    }
-
-    abbr,
-    progress,
-    time,
-    label,
-    .date {
-        color: #CDEFC2 !important;
-    }
-
-    mark,
-    code,
-    pre,
-    blockquote,
-    [class*="quote"],
-    td[style*="inset"][class="alt2"] {
-        background-color: var(--darky-bg) !important;
-    }
-
-    /* :: Heading :: */
-
-    h1, h2, h3, h4 {
-        background: none !important;
-        border-radius: 5px !important;
-    }
-
-    h5, h6 {
-        background: none !important;
-    }
-
-    /* :: Lists :: */
-    dt {
-        background-color: var(--darky-dim) !important;
-    }
-
-    dl,
-    dd {
-        background-color: var(--darky-bg) !important;
-    }
-
-    li,
-    ul {
-        background-color: inherit !important;
-    }
-
-    li a:not([class*="icon"]):not([id*="icon"]):not([onclick]),
-    dt a:not([class*="icon"]):not([id*="icon"]):not([onclick]) {
-        background-image: none !important;
-        text-indent: 0 !important;
-    }
-
-    /* :: list Item highlight :: */
-    li[class*="item"] a:hover,
-    li[class*="item"]:hover,
-
-    /* Not list item, but still useful */
-    [class*="menuitem"]:hover {
-        background-color: var(--darky-dim) !important;
-    }
-
-    /* :: Tables, cells :: */
-    table {
-        background-color: var(--darky-bg) !important;
-        border-color: var(--darky-dim) !important;
-    }
-
-    table table {
-        background: var(--darky-bg) !important;
-    }
-
-    th,
-    caption {
-        background-color: var(--darky-dim) !important;
-    }
-
-    /* :: Input :: */
-    /* Basic */
-    input:not([type="image"]),
-    textarea {
-        background: none var(--darky-bg) !important;
-        appearance: none !important;
-        opacity: 1 !important;
-        box-shadow: 0px 0px 3px 0px var(--darky-txt);
-    }
-
-    /* Style reset. */
-    input[type="checkbox"]:not(label[class*="switch"] input) {
-        appearance: checkbox !important;
-    }
-
-    input[type="radio"] {
-        appearance: radio !important;
-    }
-
-    /* :: Custom styling :: */
-    input[type="button"],
-    input[type="submit"],
-    input[type="reset"],
-    button:not([class*="play"]):not([id*="play"]):not([class*="icon"]):not([class*="link"]):not([class*="vjs-"]):not([class*="control-bar"]) {
-        background: none var(--darky-bg);
-        box-shadow: 0px 0px 2px 1px #bbb5b5;
-    }
-
-    input[type="button"]:hover,
-    input[type="submit"]:hover,
-    input[type="reset"]:hover,
-    button:hover {
-        color: #FFF !important;
-        background: none #444444 !important;
-    }
-
-    input[type="image"] {
-        opacity: .85 !important;
-    }
-
-    input[type="image"]:hover {
-        opacity: .95 !important;
-    }
-
-    /* Drop-down menu */
-    select,
-    option,
-    optgroup {
-        background: none var(--darky-bg) !important;
-        border-color: var(--darky-dim) !important;
-        color:var(--darky-txt) !important;
-        appearance: none !important;
-    }
-
-    /* :: Misc :: */
-    address, hr {
-        background: none #444 !important
-    }
-
-    /* Currently viewed page */
-    .current {
-        color: #FFF !important;
-    }
-
-    /* Menus and navigation */
-    nav,
-    menu,
-    /*Common naming conventions - in case previous declarations fail to give solid BG*/
-    [class*="open"],
-    [id*="ropdown"],
-    [class*="ropdown"],
-    [id*="menu"]:not(select),
-    [class*="menu"]:not(select),
-    [class*="tooltip"],
-    div[class*="popup"],
-    div[id*="popup"],
-    div[class*="modal"],
-    div[id*="modal"],
-    details [id*="list"],
-    div[class*="overlay"]:not([class*="touch"]),
-    dialog,
-    [role="dialog"],
-    [role="menu"],
-    [aria-modal],
-    [action="/search"] div,
-    div[class*="hovercard"],
-    div[class*="subscribe"],
-    div[class*="search"] {
-        background-color: var(--darky-dim) !important
-    }
-
-    /* Also common */
-    [class*="content"],
-    [class*="container"]:not([class*="shaka"]) {
-        background-color: var(--darky-bg) !important;
-    }
-
-    /* Headers, logos */
-    [id*="masthead"] a,
-    [id*="header"] a,
-    [id*="logo"] a,
-    [class*="logo"] a {
-        text-indent: 0 !important;
-    }
-
-    /* Instead of increasing specificity rating by using :not, set rules separately */
-    [class*="layer"],
-    #lightbox-nav,
-    #imageContainer {
-        background-color: transparent !important;
-    }
-
-    /*::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::*/
-    /* Event handlers/attributes */
-    [onclick],
-    [ondblclick],
-    [onmousedown] {
-        color: #DFD5BC !important;
-        text-indent: 0 !important;
-    }
-
-    [onclick]:hover,
-    [ondblclick]:hover,
-    [onmousedown]:hover {
-        color: #FEFF97 !important;
-    }
-
-    /* Make images transparent */
-    img {
-        opacity: .75 !important;
-    }
-
-    img:hover {
-        opacity: 1 !important;
-        background-color: #888 !important;
-    }
-
-    svg {
-        background: none !important;
-    }
-
-    /* highlight */
-    ::-moz-selection {
-        background-color: #626F61 !important;
-        color: #F6F7B9 !important;
-    }
-
-    /* :: Specific Fixes :: */
-    /* google */
-    g-img img[src^="/logos/doodles/"] {
-        display:none;
-    }
-
-    /* video players */
-    [class*="vds"] {
-        color: #fff !important;
-    }
-}
-
-@-moz-document url(about:blank){
-html, html * {
-    background: none var(--darky-bg) !important;
-    color: var(--darky-txt) !important;
-}
-}
