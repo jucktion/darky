@@ -3,7 +3,7 @@
 @namespace    global-dark-side
 @author       luckymouse
 @description  Adding the old midnight surfing by luckymouse to userstyles.world. Will try to add changes if I can, when I can.
-@version      20240808.14.21
+@version      20240810.08.17
 @license      CC0-1.0
 @preprocessor uso
 ==/UserStyle== */
@@ -34,7 +34,7 @@
     }
 
     /* Make descendents of the body element transparent. */
-    body :not(nav):not(menu):not(dialog):not([class*="slider"]):not([id*="ropdown"]):not([class*="ropdown"]):not([id*="menu"]:not(select)):not([class*="menu"]:not(select)):not([class*="tooltip"]):not(div[class*="popup"]):not(div[id*="popup"]):not(div[class*="modal"]):not(div[id*="modal"]):not(details [id*="list"]):not(div[class*="overlay"]):not([role="dialog"]):not([role="menu"]):not([data-paused]):not([data-pressed]):not([name*="icon"]):not([class*="switch"]):not([action="/search"] div):not(div[class*="hovercard"]):not(div[class*="detail"]):not([class*="subscribe"]):not([aria-modal]) {
+    body :not(nav):not(menu):not(dialog):not([aria-modal]):not([role="dialog"]):not([role="menu"]):not([class*="slider"]):not([id*="ropdown"]):not([class*="ropdown"]):not([id*="menu"]:not(select)):not([class*="menu"]:not(select)):not([class*="tooltip"]):not(div[class*="popup"]):not(div[id*="popup"]):not(div[class*="modal"]):not(div[id*="modal"]):not(details [id*="list"]):not(div[class*="overlay"]):not([data-paused]):not([data-pressed]):not([name*="icon"]):not([class*="switch"]):not([action="/search"] div):not(div[class*="hovercard"]):not(div[class*="detail"]):not([class*="subscribe"]):not([class*="search"]) {
         background-color: transparent !important;
     }
 
@@ -232,7 +232,8 @@
     [aria-modal],
     [action="/search"] div,
     div[class*="hovercard"],
-    div[class*="subscribe"] {
+    div[class*="subscribe"],
+    div[class*="search"] {
         background-color: var(--darky-dim) !important
     }
 
