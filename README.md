@@ -1,6 +1,6 @@
 [![Install directly with Stylus](https://img.shields.io/badge/Install%20directly%20with-Stylus-00adad.svg)](https://userstyles.world/api/style/13953.user.css)
 
-Adding the old midnight surfing to userstyles.world. Will try to add changes if I can, when I can. Fast and less resource intensive on mobile. Mainly for websites that do not already provide a dark interface.
+Adding the old midnight surfing to [userstyles.world](https://userstyles.world/style/13953/darky-global). Will try to add changes if I can, when I can. Fast and less resource intensive on mobile. Mainly for websites that do not already provide a dark interface.
 
 ### Features
 - Dark theme for general web content (News/Blogs/Forums)
