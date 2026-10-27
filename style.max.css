@@ -33,7 +33,7 @@
 
     /* Basic bodies and exceptions */
     html,
-    body,
+    body,div,header,article,footer,
     input[type="button"],
     input[type="submit"],
     input[type="reset"],
@@ -101,7 +101,7 @@
     }
 
     /* :: Input :: */
-    textarea,
+    textarea,[role="checkbox"] *,
     input:not([type="image"]):not([type="checkbox"]):not([type="radio"]):not([type="range"]),
     button:not([class*="play"]):not([id*="play"]):not([class*="icon"]):not([class*="link"]):not([class*="vjs-"]):not([class*="control-bar"]) {
         background: none var(--darky-bg) !important;
