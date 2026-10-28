@@ -74,7 +74,7 @@ color: var(--darky-txt) !important;
 appearance: none !important}
 .current{
 color: var(--whitey) !important}
-:is(nav,menu,th,dt,caption,mark,code,pre,blockquote,[class*="quote"],li[class*="item"]:hover,li[class*="item"] a:hover,[class*="menuitem"]:hover,[class^="open"],[id*="ropdown"],[class*="ropdown"],:is([id*="menu"],[class*="menu"]):not(select),[class*="tooltip"],div:is([class*="popup"],[id*="popup"],[id*="modal"]),div[class*="modal"]:not([class*="nav"]),details [id*="list"],div[class*="overlay"]:not([class*="touch"]),dialog,[role="dialog"],[role="menu"],[aria-modal],[action="/search"] div,div:is([class*="hovercard"],[class*="subscribe"],[class*="search"])){
+:is(nav,menu,th,dt,caption,mark,code,pre,blockquote,[class*="quote"],li[class*="item"]:hover,li[class*="item"] a:hover,[class*="menuitem"]:hover,[class^="open"]:not([class*="lightbox"]),[id*="ropdown"],[class*="ropdown"],:is([id*="menu"],[class*="menu"]):not(select),[class*="tooltip"],div:is([class*="popup"],[id*="popup"],[id*="modal"]),div[class*="modal"]:not([class*="nav"]),details [id*="list"],div[class*="overlay"]:not([class*="touch"]),dialog,[role="dialog"],[role="menu"],[aria-modal],[action="/search"] div,div:is([class*="hovercard"],[class*="subscribe"],[class*="search"])){
 background-color: var(--darky-dim) !important}
 img{
 opacity: .75 !important}
